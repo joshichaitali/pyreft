@@ -53,7 +53,13 @@ def make_data_collator(tokenizer, model) -> ReftDataCollator:
 
 
 def make_dataloader(dataset: Dataset, batch_size: int, collate_fn: DataCollatorForSeq2Seq, shuffle: bool) -> DataLoader:
-    return DataLoader(dataset, shuffle=shuffle, batch_size=batch_size, collate_fn=collate_fn)
+    #old code
+    #return DataLoader(dataset, shuffle=shuffle, batch_size=batch_size, collate_fn=collate_fn)
+
+    #return just the first batch
+    dataloader = DataLoader(dataset, shuffle=shuffle, batch_size=batch_size, collate_fn=collate_fn)
+    for batch in dataloader:
+        return batch
 
 
 class ReftTrainer(Trainer):
