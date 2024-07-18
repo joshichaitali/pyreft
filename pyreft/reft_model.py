@@ -20,9 +20,7 @@ class ReftModel(pv.IntervenableModel):
         for attr in vars(intervenable_model):
             setattr(reft_model, attr, getattr(intervenable_model, attr))
 
-        #new_code to print model layers
-        for name, param in reft_model.named_parameters():
-            print(name)
+        
         return reft_model
 
     @staticmethod
