@@ -342,6 +342,11 @@ def finetune(
     if use_lora:
         # you need to call this to re-enable lora grads!
         reft_model.model.enable_adapter_layers()
+    #new code start
+    for name, param in reft_model.named_parameters():
+        print(name)
+    # new code end
+    
     reft_model.print_trainable_parameters()
 
     # for GLUE tasks, we enable gradients on the classifier head.
